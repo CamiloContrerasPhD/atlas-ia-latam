@@ -1,0 +1,5 @@
+body{margin:0;-webkit-font-smoothing:antialiased}
+.cx .dash-select{font:inherit;font-size:13px;padding:6px 28px 6px 10px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' fill='none' stroke='%23667085' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 8px center!important;background-size:12px!important;cursor:pointer;max-width:100%}
+.cx .dash-select:focus{outline:2px solid #C7D2FE;outline-offset:1px}
+.cx a{color:#4F46E5}
+:root{--font-anthropic-sans:system-ui}
