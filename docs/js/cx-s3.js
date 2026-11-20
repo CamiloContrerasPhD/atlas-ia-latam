@@ -17,7 +17,7 @@ svg.append('text').attr('class','cx-tick').attr('x',W-m.r).attr('y',H-4).attr('t
 svg.append('line').attr('class','cx-ref').attr('x1',X(1)).attr('x2',X(1)).attr('y1',m.t).attr('y2',H-m.b);
 svg.append('g').selectAll('circle').data(s).join('circle').attr('cx',o=>X(+o.intensidad)).attr('cy',o=>Y(+o.cursos)).attr('r',5).style('fill',CX.C[0]).attr('class','cx-dot cx-doth').style('animation-delay',(o,i)=>(150+i*30)+'ms');
 const top=[...s].sort((a,b)=>b.intensidad-a.intensidad).slice(0,2).map(o=>o.geo).concat([[...s].sort((a,b)=>b.cursos-a.cursos)[0].geo]);
-CX.place(svg,s.filter(o=>top.includes(o.geo)).map(o=>({label:o.nombre,x:X(+o.intensidad),y:Y(+o.cursos)})),W);
+CX.place(svg,[...new Set(top)].map(g=>s.find(o=>o.geo===g)).map(o=>({label:o.nombre.replace(' D.C.',''),x:X(+o.intensidad),y:Y(+o.cursos)})),W);
 const xy=s.map(o=>[X(+o.intensidad),Y(+o.cursos)]);const del=d3.Delaunay.from(xy);
 svg.on('pointermove',ev=>{const p=d3.pointer(ev);const i=del.find(p[0],p[1]);const q=xy[i];if(!q||Math.hypot(q[0]-p[0],q[1]-p[1])>24){T.hide();return;}const o=s[i];const e=d3.pointer(ev,el);T.show([o.nombre+' ('+pt+')',t('Intensidad: ','Intensity: ')+CX.fmt(o.intensidad,'f2')+t(' veces lo proporcional',' times the proportional level'),t('Cursos: ','Coursework: ')+CX.fmt(o.cursos,'f1')+t(' % de las conversaciones','% of conversations'),t('Participación en el uso del país: ','Share of the country\'s usage: ')+CX.fmt(o.uso_pct,'f1')+' %'],e[0],e[1]);}).on('pointerleave',()=>T.hide());});});
 
